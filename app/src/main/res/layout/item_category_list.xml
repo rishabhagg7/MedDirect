@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/category"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="10dp"
+        android:elevation="20dp">
+            <ImageView
+                android:padding="5dp"
+                android:id="@+id/category_image"
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                android:src="@drawable/ic_dental"
+                android:scaleType="fitCenter"/>
+            <TextView
+                android:id="@+id/category_name"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:text="Eyes Specialist"
+                android:textSize="25sp"
+                android:textColor="@color/light_blue_700"
+                android:textStyle="bold"
+                android:layout_marginStart="70dp"
+                android:layout_gravity="center"/>
+    </com.google.android.material.card.MaterialCardView>
+</LinearLayout>

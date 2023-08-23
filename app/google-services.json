@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "819074908622",
+    "project_id": "meddirect-371b9",
+    "storage_bucket": "meddirect-371b9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:819074908622:android:56a6ec80f6e8b98028ab9f",
+        "android_client_info": {
+          "package_name": "com.example.meddirect"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "819074908622-v3bgkuke7025qkqqt18skb3ro9usjggu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDPuYAL4Mm92ni4vfNPH3L21BS6OA3Cr0A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "819074908622-v3bgkuke7025qkqqt18skb3ro9usjggu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
