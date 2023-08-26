@@ -54,4 +54,5 @@
     <string name="blood_group">Blood Group</string>
     <string name="update_details">Update Details</string>
     <string name="sign_out">Sign Out</string>
+    <string name="category_image">category_image</string>
 </resources>

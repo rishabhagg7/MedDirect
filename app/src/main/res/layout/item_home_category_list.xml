@@ -9,15 +9,15 @@
         android:layout_height="100dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="10dp"
-        android:layout_marginTop="10dp"
-        android:elevation="20dp">
+        android:layout_marginTop="10dp">
         <ImageView
             android:padding="5dp"
             android:id="@+id/category_image"
             android:layout_width="100dp"
             android:layout_height="100dp"
             tools:src="@drawable/ic_dental"
-            android:scaleType="fitCenter"/>
+            android:scaleType="fitCenter"
+            android:contentDescription="@string/category_image" />
         <TextView
             android:id="@+id/category_name"
             android:layout_width="100dp"
