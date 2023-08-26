@@ -83,7 +83,7 @@ class CalendarAdapter(private val listener: (calendarDateModel: CalendarDate, po
         return list.size
     }
 
-    fun setData(calendarList: ArrayList<CalendarDate>) {
+    fun setCalendarData(calendarList: ArrayList<CalendarDate>) {
         list.clear()
         list.addAll(calendarList)
         notifyDataSetChanged()

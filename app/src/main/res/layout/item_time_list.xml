@@ -2,28 +2,24 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <androidx.cardview.widget.CardView
-        android:id="@+id/card_calendar"
+        android:id="@+id/card_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:cardElevation="7dp">
 
         <LinearLayout
-            android:layout_width="50dp"
-            android:layout_height="71dp"
+            android:layout_width="75dp"
+            android:layout_height="42dp"
             android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/tv_calendar_day"
+                android:id="@+id/tv_time"
                 style="@style/TextAppearance.MaterialComponents.Overline"
+                android:textSize="15sp"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:id="@+id/tv_calendar_date"
-                style="@style/TextAppearance.MaterialComponents.Subtitle1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:text="@string/time_slot"/>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </layout>

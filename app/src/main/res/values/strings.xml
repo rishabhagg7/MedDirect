@@ -55,4 +55,9 @@
     <string name="update_details">Update Details</string>
     <string name="sign_out">Sign Out</string>
     <string name="category_image">category_image</string>
+    <string name="select_date">Select Date</string>
+    <string name="select_time">Select Time Slot</string>
+    <string name="confirm_appointment">Confirm Appointment</string>
+    <string name="time_slot">%s:%s</string>
+    <string name="problem_description">Problem Description</string>
 </resources>

@@ -1,31 +1,36 @@
 package com.example.meddirect.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.SnapHelper
 import com.example.meddirect.R
 import com.example.meddirect.adapters.CalendarAdapter
+import com.example.meddirect.adapters.TimeAdapter
 import com.example.meddirect.databinding.ActivityMakeAppointmentBinding
 import com.example.meddirect.model.CalendarDate
+import com.example.meddirect.model.TimeSlot
 import com.example.meddirect.utils.HorizontalItemDecoration
 import java.text.SimpleDateFormat
 import java.util.Calendar
-import java.util.Date
 import java.util.Locale
 
 class MakeAppointmentActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMakeAppointmentBinding
     private lateinit var bundle: Bundle
+    private lateinit var adapterCalendar: CalendarAdapter
+    private lateinit var adapterTimeSlot: TimeAdapter
+    private lateinit var selectedDate: CalendarDate
+    private lateinit var selectedTime: TimeSlot
+    private val calendarList = ArrayList<CalendarDate>()
+    private val timeSlotList = ArrayList<TimeSlot>()
     private val sdf = SimpleDateFormat("MMMM yyyy",Locale.ENGLISH)
     private val cal = Calendar.getInstance(Locale.ENGLISH)
     private val currentDate = Calendar.getInstance(Locale.ENGLISH)
-    //private val dates = ArrayList<Date>()
-    private lateinit var adapter: CalendarAdapter
-    private val calendarList = ArrayList<CalendarDate>()
-    private lateinit var selectedDate: Date
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,9 +39,11 @@ class MakeAppointmentActivity : AppCompatActivity() {
 
         bundle = intent.extras!!
 
-        setUpAdapter()
+        setUpCalendarAdapter()
         setUpCalendar()
+        setUpTimeAdapter()
         setUpClickListener()
+        adapterTimeSlot.setTimeData(timeSlotList)
     }
 
     private fun handleNextAndPrevious() {
@@ -61,47 +68,70 @@ class MakeAppointmentActivity : AppCompatActivity() {
             cal.add(Calendar.MONTH, -1)
             setUpCalendar()
         }
+        binding.buttonConfirmAppointment.setOnClickListener {
+            val intent = Intent(this,ShowAppointmentDetailsActivity::class.java)
+            val sendBundle = Bundle()
+            intent.putExtras(sendBundle)
+            startActivity(intent)
+        }
     }
 
-    private fun setUpAdapter() {
+    private fun setUpTimeAdapter() {
+        timeSlotList.addAll(arrayListOf(
+            TimeSlot("08"), TimeSlot("09"),TimeSlot("10"), TimeSlot("11"),
+            TimeSlot("14"), TimeSlot("15"), TimeSlot("16"), TimeSlot("19"),
+            TimeSlot("20"), TimeSlot("21"), TimeSlot("22")
+        ))
+        val rvTime = binding.rvTime
         val spacingInPixels = resources.getDimensionPixelSize(R.dimen.single_calendar_margin)
-        binding.recyclerView.addItemDecoration(HorizontalItemDecoration(spacingInPixels))
+        rvTime.addItemDecoration(HorizontalItemDecoration(spacingInPixels))
+        rvTime.layoutManager = GridLayoutManager(this,4)
+        adapterTimeSlot = TimeAdapter{_:TimeSlot, position:Int ->
+            timeSlotList.forEachIndexed { index, timeSlot ->
+                timeSlot.isSelected = index == position
+                if(timeSlot.isSelected){
+                    selectedTime = timeSlot
+                }
+            }
+            adapterTimeSlot.setTimeData(timeSlotList)
+        }
+        rvTime.adapter = adapterTimeSlot
+    }
+
+    private fun setUpCalendarAdapter() {
+        val spacingInPixels = resources.getDimensionPixelSize(R.dimen.single_calendar_margin)
+        binding.rvCalendar.addItemDecoration(HorizontalItemDecoration(spacingInPixels))
         val snapHelper: SnapHelper = LinearSnapHelper()
-        snapHelper.attachToRecyclerView(binding.recyclerView)
-        adapter = CalendarAdapter { _: CalendarDate, position: Int ->
+        snapHelper.attachToRecyclerView(binding.rvCalendar)
+        adapterCalendar = CalendarAdapter { _: CalendarDate, position: Int ->
             calendarList.forEachIndexed { index, calendarModel ->
                 calendarModel.isSelected = index == position
                 if(calendarModel.isSelected){
-                    selectedDate = calendarModel.data
+                    selectedDate = calendarModel
                 }
             }
-            adapter.setData(calendarList)
+            adapterCalendar.setCalendarData(calendarList)
         }
-        binding.recyclerView.adapter = adapter
+        binding.rvCalendar.adapter = adapterCalendar
     }
 
 
     private fun setUpCalendar() {
         handleNextAndPrevious()
-//        val calendarList = ArrayList<CalendarDate>()
         calendarList.clear()
         binding.tvDateMonth.text = sdf.format(cal.time)
         val monthCalendar = cal.clone() as Calendar
         val maxDaysInMonth = cal.getActualMaximum(Calendar.DAY_OF_MONTH)
-        var dateItr = currentDate.get(Calendar.DATE)
+        var dateItr = currentDate.get(Calendar.DATE) + 1
         if(cal != currentDate){
             dateItr = 1
         }
-        //dates.clear()
         monthCalendar.set(Calendar.DAY_OF_MONTH, dateItr)
         while (dateItr <= maxDaysInMonth) {
-            //dates.add(monthCalendar.time)
             calendarList.add(CalendarDate(monthCalendar.time))
             monthCalendar.add(Calendar.DAY_OF_MONTH, 1)
             dateItr += 1
         }
-//        calendarList2.clear()
-//        calendarList2.addAll(calendarList)
-        adapter.setData(calendarList)
+        adapterCalendar.setCalendarData(calendarList)
     }
 }
