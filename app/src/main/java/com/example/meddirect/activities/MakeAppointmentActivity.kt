@@ -1,7 +1,6 @@
 package com.example.meddirect.activities
 
 import android.os.Bundle
-import android.util.Log
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearSnapHelper
@@ -13,6 +12,7 @@ import com.example.meddirect.model.CalendarDate
 import com.example.meddirect.utils.HorizontalItemDecoration
 import java.text.SimpleDateFormat
 import java.util.Calendar
+import java.util.Date
 import java.util.Locale
 
 class MakeAppointmentActivity : AppCompatActivity() {
@@ -25,6 +25,7 @@ class MakeAppointmentActivity : AppCompatActivity() {
     //private val dates = ArrayList<Date>()
     private lateinit var adapter: CalendarAdapter
     private val calendarList = ArrayList<CalendarDate>()
+    private lateinit var selectedDate: Date
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -71,7 +72,7 @@ class MakeAppointmentActivity : AppCompatActivity() {
             calendarList.forEachIndexed { index, calendarModel ->
                 calendarModel.isSelected = index == position
                 if(calendarModel.isSelected){
-                    Log.d("check", calendarModel.data.year.toString())
+                    selectedDate = calendarModel.data
                 }
             }
             adapter.setData(calendarList)

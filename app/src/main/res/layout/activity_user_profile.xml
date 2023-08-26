@@ -129,7 +129,7 @@
                 android:inputType="none"
                 android:maxLines="1"
                 android:textColorHint="@color/black"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <androidx.appcompat.widget.AppCompatButton
