@@ -3,6 +3,7 @@ package com.example.meddirect.activities
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
@@ -24,13 +25,13 @@ class MakeAppointmentActivity : AppCompatActivity() {
     private lateinit var bundle: Bundle
     private lateinit var adapterCalendar: CalendarAdapter
     private lateinit var adapterTimeSlot: TimeAdapter
-    private lateinit var selectedDate: CalendarDate
-    private lateinit var selectedTime: TimeSlot
     private val calendarList = ArrayList<CalendarDate>()
     private val timeSlotList = ArrayList<TimeSlot>()
     private val sdf = SimpleDateFormat("MMMM yyyy",Locale.ENGLISH)
     private val cal = Calendar.getInstance(Locale.ENGLISH)
     private val currentDate = Calendar.getInstance(Locale.ENGLISH)
+    private var selectedDate: CalendarDate? = null
+    private var selectedTime: TimeSlot? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -69,11 +70,25 @@ class MakeAppointmentActivity : AppCompatActivity() {
             setUpCalendar()
         }
         binding.buttonConfirmAppointment.setOnClickListener {
-            val intent = Intent(this,ShowAppointmentDetailsActivity::class.java)
-            val sendBundle = Bundle()
-            intent.putExtras(sendBundle)
-            startActivity(intent)
+            if(validateData()) {
+                val intent = Intent(this, ShowAppointmentDetailsActivity::class.java)
+                val sendBundle = Bundle()
+                intent.putExtras(sendBundle)
+                startActivity(intent)
+            }
         }
+    }
+
+    private fun validateData(): Boolean {
+        if(selectedDate == null) {
+            Toast.makeText(this, "Pick a date for the appointment!", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        if(selectedTime == null){
+            Toast.makeText(this, "Pick a time slot for the appointment!", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        return true
     }
 
     private fun setUpTimeAdapter() {
@@ -128,7 +143,11 @@ class MakeAppointmentActivity : AppCompatActivity() {
         }
         monthCalendar.set(Calendar.DAY_OF_MONTH, dateItr)
         while (dateItr <= maxDaysInMonth) {
-            calendarList.add(CalendarDate(monthCalendar.time))
+            if(CalendarDate(monthCalendar.time).data == selectedDate?.data){
+                calendarList.add(CalendarDate(monthCalendar.time,true))
+            }else {
+                calendarList.add(CalendarDate(monthCalendar.time))
+            }
             monthCalendar.add(Calendar.DAY_OF_MONTH, 1)
             dateItr += 1
         }
