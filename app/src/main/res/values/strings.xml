@@ -62,4 +62,25 @@
     <string name="problem_description">Problem Description</string>
     <string name="appointment_date">%s, %s %s %s</string>
     <string name="appointment_time">%s:%s</string>
+    <string name="patient_name">Patient Name</string>
+    <string name="patient_email">Patient Email</string>
+    <string name="patient_age">Patient Age</string>
+    <string name="patient_weight">Patient Weight</string>
+    <string name="patient_height">Patient Height</string>
+    <string name="patient_blood_group">Patient Blood Group</string>
+    <string name="doctor_name">Doctor Name</string>
+    <string name="doctor_category">Doctor Category</string>
+    <string name="tv_appointment_date">Appointment Date</string>
+    <string name="tv_appointment_time">Appointment Time</string>
+    <string name="appointment_instruction">*Update your profile if the details are missing/not updated</string>
+    <string name="confirm_message">I hereby declare that the information given above is true and accurate to the best of my knowledge.</string>
+    <string name="make_payment">Make Payment</string>
+    <string name="appointment_details">Appointment Details</string>
+    <string name="doctor_fees">Doctor Fees</string>
+    <string name="fees_doctor">%s%s</string>
+    <string name="app_charges">App Charges(5%)</string>
+    <string name="charges_app">%s%s</string>
+    <string name="bill_details">Bill Details</string>
+    <string name="total_pay">Total Pay</string>
+    <string name="pay_total">%s%s</string>
 </resources>

@@ -6,5 +6,6 @@ data class Appointment(
     val dId: String? = null,
     val date: String? = null,
     val time: String? = null,
-    val description: String? = null
+    val description: String? = null,
+    val totalPay: String? = null
 )
