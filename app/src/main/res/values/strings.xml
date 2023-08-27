@@ -60,4 +60,6 @@
     <string name="confirm_appointment">Confirm Appointment</string>
     <string name="time_slot">%s:%s</string>
     <string name="problem_description">Problem Description</string>
+    <string name="appointment_date">%s, %s %s %s</string>
+    <string name="appointment_time">%s:%s</string>
 </resources>

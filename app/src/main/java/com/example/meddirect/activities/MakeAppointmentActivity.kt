@@ -15,6 +15,7 @@ import com.example.meddirect.databinding.ActivityMakeAppointmentBinding
 import com.example.meddirect.model.CalendarDate
 import com.example.meddirect.model.TimeSlot
 import com.example.meddirect.utils.HorizontalItemDecoration
+import com.google.firebase.auth.FirebaseAuth
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
@@ -25,6 +26,7 @@ class MakeAppointmentActivity : AppCompatActivity() {
     private lateinit var bundle: Bundle
     private lateinit var adapterCalendar: CalendarAdapter
     private lateinit var adapterTimeSlot: TimeAdapter
+    private lateinit var auth: FirebaseAuth
     private val calendarList = ArrayList<CalendarDate>()
     private val timeSlotList = ArrayList<TimeSlot>()
     private val sdf = SimpleDateFormat("MMMM yyyy",Locale.ENGLISH)
@@ -38,6 +40,7 @@ class MakeAppointmentActivity : AppCompatActivity() {
         binding = ActivityMakeAppointmentBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        auth = FirebaseAuth.getInstance()
         bundle = intent.extras!!
 
         setUpCalendarAdapter()
@@ -73,6 +76,21 @@ class MakeAppointmentActivity : AppCompatActivity() {
             if(validateData()) {
                 val intent = Intent(this, ShowAppointmentDetailsActivity::class.java)
                 val sendBundle = Bundle()
+                val doctorId = bundle.getString("dId")
+                val problemDescription = binding.descriptionEditText.text.toString()
+                val appointmentDate = String.format(resources.getString(R.string.appointment_date),
+                    selectedDate!!.calendarDayOfWeek,selectedDate!!.calendarDate,selectedDate!!.calendarMonth,
+                    selectedDate!!.calendarYear
+                )
+                val appointmentTime = String.format(resources.getString(R.string.appointment_time),
+                    selectedTime!!.hour, selectedTime!!.minutes
+                )
+                sendBundle.apply {
+                    putString("dId",doctorId)
+                    putString("problemDescription",problemDescription)
+                    putString("aDate",appointmentDate)
+                    putString("aTime",appointmentTime)
+                }
                 intent.putExtras(sendBundle)
                 startActivity(intent)
             }
