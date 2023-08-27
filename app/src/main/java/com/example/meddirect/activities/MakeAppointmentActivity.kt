@@ -73,9 +73,9 @@ class MakeAppointmentActivity : AppCompatActivity() {
             setUpCalendar()
         }
         binding.buttonConfirmAppointment.setOnClickListener {
+            //check if the user has selected both date and time
             if(validateData()) {
-                val intent = Intent(this, ShowAppointmentDetailsActivity::class.java)
-                val sendBundle = Bundle()
+                //getting data to send it to confirmation page
                 val doctorId = bundle.getString("dId")
                 val problemDescription = binding.descriptionEditText.text.toString()
                 val appointmentDate = String.format(resources.getString(R.string.appointment_date),
@@ -85,12 +85,18 @@ class MakeAppointmentActivity : AppCompatActivity() {
                 val appointmentTime = String.format(resources.getString(R.string.appointment_time),
                     selectedTime!!.hour, selectedTime!!.minutes
                 )
+
+                //making bundle to send data
+                val sendBundle = Bundle()
                 sendBundle.apply {
                     putString("dId",doctorId)
                     putString("problemDescription",problemDescription)
                     putString("aDate",appointmentDate)
                     putString("aTime",appointmentTime)
                 }
+
+                //starting activity
+                val intent = Intent(this, ShowAppointmentDetailsActivity::class.java)
                 intent.putExtras(sendBundle)
                 startActivity(intent)
             }
@@ -102,14 +108,20 @@ class MakeAppointmentActivity : AppCompatActivity() {
             Toast.makeText(this, "Pick a date for the appointment!", Toast.LENGTH_SHORT).show()
             return false
         }
+        //date validated
+
+
         if(selectedTime == null){
             Toast.makeText(this, "Pick a time slot for the appointment!", Toast.LENGTH_SHORT).show()
             return false
         }
+        //time validated
+
         return true
     }
 
     private fun setUpTimeAdapter() {
+        //time slots added, we can further fetch this detail from firebase
         timeSlotList.addAll(arrayListOf(
             TimeSlot("08"), TimeSlot("09"),TimeSlot("10"), TimeSlot("11"),
             TimeSlot("14"), TimeSlot("15"), TimeSlot("16"), TimeSlot("19"),
