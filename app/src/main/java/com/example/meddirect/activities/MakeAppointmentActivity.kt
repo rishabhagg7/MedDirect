@@ -15,7 +15,6 @@ import com.example.meddirect.databinding.ActivityMakeAppointmentBinding
 import com.example.meddirect.model.CalendarDate
 import com.example.meddirect.model.TimeSlot
 import com.example.meddirect.utils.HorizontalItemDecoration
-import com.google.firebase.auth.FirebaseAuth
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
@@ -26,7 +25,6 @@ class MakeAppointmentActivity : AppCompatActivity() {
     private lateinit var bundle: Bundle
     private lateinit var adapterCalendar: CalendarAdapter
     private lateinit var adapterTimeSlot: TimeAdapter
-    private lateinit var auth: FirebaseAuth
     private val calendarList = ArrayList<CalendarDate>()
     private val timeSlotList = ArrayList<TimeSlot>()
     private val sdf = SimpleDateFormat("MMMM yyyy",Locale.ENGLISH)
@@ -40,7 +38,6 @@ class MakeAppointmentActivity : AppCompatActivity() {
         binding = ActivityMakeAppointmentBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        auth = FirebaseAuth.getInstance()
         bundle = intent.extras!!
 
         setUpCalendarAdapter()
