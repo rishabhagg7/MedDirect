@@ -1,19 +1,24 @@
 package com.example.meddirect.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.example.meddirect.R
 import com.example.meddirect.databinding.ActivityShowAppointmentDetailsBinding
 import com.example.meddirect.model.Appointment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.razorpay.Checkout
+import com.razorpay.PaymentResultListener
+import org.json.JSONObject
 import java.util.Currency
 import java.util.Locale
 import kotlin.math.roundToInt
 
-class ShowAppointmentDetailsActivity : AppCompatActivity() {
+class ShowAppointmentDetailsActivity : AppCompatActivity(), PaymentResultListener {
 
     private lateinit var binding: ActivityShowAppointmentDetailsBinding
     private lateinit var auth: FirebaseAuth
@@ -28,7 +33,9 @@ class ShowAppointmentDetailsActivity : AppCompatActivity() {
     private lateinit var timeAppointment: String
     private lateinit var description: String
     private lateinit var totalPayment: String
-    override fun onCreate(savedInstanceState: Bundle?) {
+    private lateinit var paymentId: String
+    private var appointmentId: String? = null
+    override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
         binding = ActivityShowAppointmentDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -46,21 +53,55 @@ class ShowAppointmentDetailsActivity : AppCompatActivity() {
 
         displayData()
 
+        //RazorPay check out
+        Checkout.preload(this@ShowAppointmentDetailsActivity)
+
         binding.makePaymentButton.setOnClickListener{
             if(!binding.confirmCheckBox.isChecked){
                 Toast.makeText(this,"Check the box to continue!",Toast.LENGTH_SHORT).show()
             }else{
-                createAppointment()
+                makePayment()
             }
+        }
+    }
+
+    private fun makePayment(){
+        val amount = totalPayment.substring(1).toInt()
+        val checkout = Checkout()
+        checkout.setKeyID("rzp_test_lBA5Sw7LRxriNH")
+        try{
+            val options = JSONObject()
+            options.apply {
+                put("name","Medical Direct India Limited")
+                put("description","Payment process for Appointment ID: $appointmentId")
+                put("theme.color", ContextCompat.getColor(this@ShowAppointmentDetailsActivity,R.color.light_blue_700))
+                put("currency","INR")
+                put("amount",amount*100)
+            }
+
+            val retryObj = JSONObject()
+            retryObj.apply {
+                put("enabled",true)
+                put("max_count",4)
+            }
+            options.put("retry",retryObj)
+
+            checkout.open(this,options)
+
+        }catch (e:Exception){
+            Toast.makeText(this@ShowAppointmentDetailsActivity,
+                "Payment Failed: Message- ${e.message}",
+                Toast.LENGTH_LONG).show()
+            e.printStackTrace()
         }
     }
 
     private fun createAppointment() {
         //user may have updated description
         updateDescription()
-        val aId = aIdReference.push().key!!
-        val appointment = Appointment(aId,userId,doctorId,dateAppointment,timeAppointment,description,totalPayment)
-        aIdReference.child(aId).setValue(appointment).addOnCompleteListener {
+        appointmentId = aIdReference.push().key!!
+        val appointment = Appointment(appointmentId,userId,doctorId,dateAppointment,timeAppointment,description,totalPayment,paymentId)
+        aIdReference.child(appointmentId!!).setValue(appointment).addOnCompleteListener {
             Toast.makeText(this,"Appointment Scheduled Successfully!",Toast.LENGTH_SHORT).show()
         }
     }
@@ -121,6 +162,22 @@ class ShowAppointmentDetailsActivity : AppCompatActivity() {
         appointmentDate.setText(dateAppointment)
         appointmentTime.setText(timeAppointment)
         problemDescription.setText(description)
+
+    }
+
+    override fun onPaymentSuccess(p0: String?) {
+        paymentId = p0!!
+        Toast.makeText(this,"Payment Successful",Toast.LENGTH_SHORT).show()
+        createAppointment()
+        val intent = Intent(this,HomeActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        startActivity(intent)
+        finish()
+    }
+
+    override fun onPaymentError(p0: Int, p1: String?) {
 
     }
 }
