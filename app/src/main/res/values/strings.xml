@@ -83,4 +83,6 @@
     <string name="bill_details">Bill Details</string>
     <string name="total_pay">Total Pay</string>
     <string name="pay_total">%s%s</string>
+    <string name="calender_key">%s-%s-%s</string>
+    <string name="time_slot_key">%s:%s</string>
 </resources>

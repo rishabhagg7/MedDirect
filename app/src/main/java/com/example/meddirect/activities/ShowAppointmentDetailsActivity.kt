@@ -166,15 +166,26 @@ class ShowAppointmentDetailsActivity : AppCompatActivity(), PaymentResultListene
     }
 
     override fun onPaymentSuccess(p0: String?) {
-        paymentId = p0!!
-        Toast.makeText(this,"Payment Successful",Toast.LENGTH_SHORT).show()
-        createAppointment()
-        val intent = Intent(this,HomeActivity::class.java)
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-        startActivity(intent)
-        finish()
+        val dateKey = bundle.getString("dateKey")
+        val timeKey = timeAppointment
+        database.reference.child("dateTime")
+            .child(doctorId)
+            .child(dateKey!!)
+            .child("timeSlots")
+            .child(timeKey)
+            .child("booked")
+            .setValue(true)
+            .addOnCompleteListener {
+                paymentId = p0!!
+                Toast.makeText(this,"Payment Successful",Toast.LENGTH_SHORT).show()
+                createAppointment()
+                val intent = Intent(this,HomeActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                startActivity(intent)
+                finish()
+            }
     }
 
     override fun onPaymentError(p0: Int, p1: String?) {
