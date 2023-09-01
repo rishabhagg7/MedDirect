@@ -197,6 +197,11 @@ class MakeAppointmentActivity : AppCompatActivity() {
                         timeSlotList.add(data)
                     }
                 }
+                if(timeSlotList.size == 0){
+                    binding.tvNoSlot.visibility = TextView.VISIBLE
+                }else{
+                    binding.tvNoSlot.visibility = TextView.INVISIBLE
+                }
                 adapterTimeSlot.setTimeData(timeSlotList)
             }
 
@@ -208,6 +213,11 @@ class MakeAppointmentActivity : AppCompatActivity() {
                         timeSlotList.add(data)
                     }
                 }
+                if(timeSlotList.size == 0){
+                    binding.tvNoSlot.visibility = TextView.VISIBLE
+                }else{
+                    binding.tvNoSlot.visibility = TextView.INVISIBLE
+                }
                 adapterTimeSlot.setTimeData(timeSlotList)
             }
 
@@ -218,6 +228,11 @@ class MakeAppointmentActivity : AppCompatActivity() {
                     if(!data!!.isBooked){
                         timeSlotList.add(data)
                     }
+                }
+                if(timeSlotList.size == 0){
+                    binding.tvNoSlot.visibility = TextView.VISIBLE
+                }else{
+                    binding.tvNoSlot.visibility = TextView.INVISIBLE
                 }
                 adapterTimeSlot.setTimeData(timeSlotList)
             }
@@ -295,6 +310,5 @@ class MakeAppointmentActivity : AppCompatActivity() {
             //dateReference.child("timeSlots").setValue(timeSlotList)
         }
     }
-
 
 }

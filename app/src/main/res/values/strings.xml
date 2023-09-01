@@ -85,4 +85,5 @@
     <string name="pay_total">%s%s</string>
     <string name="calender_key">%s-%s-%s</string>
     <string name="time_slot_key">%s:%s</string>
+    <string name="no_slot_available">No Slot Available</string>
 </resources>

@@ -118,6 +118,21 @@
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"/>
 
         <TextView
+            android:id="@+id/tv_no_slot"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:gravity="end"
+            android:text="@string/no_slot_available"
+            android:textSize="20sp"
+            android:visibility="invisible"
+            app:layout_constraintTop_toTopOf="@id/v_time_line"
+            app:layout_constraintStart_toStartOf="@id/v_time_line"
+            app:layout_constraintEnd_toEndOf="@id/v_time_line"/>
+
+        <TextView
             android:id="@+id/tv_problem_description_heading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
