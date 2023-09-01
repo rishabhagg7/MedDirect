@@ -274,25 +274,27 @@ class MakeAppointmentActivity : AppCompatActivity() {
             dateItr += 1
         }
         //function to add date and time slots in fireBase
-        //addDatesToDataBase()
+        addDatesToDataBase()
 
         adapterCalendar.setCalendarData(calendarList)
     }
 
-    /*
+
     private fun addDatesToDataBase() {
         val databaseReference = database.reference.child("dateTime").child(doctorId!!)
         for(date in calendarList){
             val dateKey = String.format(resources.getString(R.string.calender_key),date.calendarDate,date.calendarMonth,date.calendarYear)
             val dateReference = databaseReference.child(dateKey)
             dateReference.child("dateKey").setValue(dateKey)
+            /*
             for(slot in timeSlotList){
                 val timeKey = String.format(getString(R.string.appointment_time,slot.hour,slot.minutes))
                 dateReference.child("timeSlots").child(timeKey).setValue(slot)
             }
-//            dateReference.child("timeSlots").setValue(timeSlotList)
+            */
+            //dateReference.child("timeSlots").setValue(timeSlotList)
         }
     }
-    */
+
 
 }
