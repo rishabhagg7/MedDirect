@@ -7,14 +7,13 @@
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/doctor"
         android:layout_width="match_parent"
-        android:layout_height="140dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
         android:elevation="20dp">
 
         <ImageView
-            android:id="@+id/doctor_image"
+            android:id="@+id/appointment_doctor_image"
             android:layout_width="130dp"
             android:layout_height="match_parent"
             tools:src="@tools:sample/avatars"
@@ -29,39 +28,39 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
             <TextView
-                android:layout_marginTop="3dp"
-                android:id="@+id/doctor_name"
+                android:layout_marginTop="5dp"
+                android:id="@+id/appointment_doctor_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Dr. Neil Huston"
+                tools:text="Dr. Neil Huston"
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:textSize="19sp"/>
             <TextView
-                android:id="@+id/doctor_category"
+                android:id="@+id/appointment_doctor_category"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Eyes Specialist"
-                android:textColor="#BBBABF"/>
+                tools:text="Eyes Specialist"
+                android:textColor="@color/indigo_800"/>
             <TextView
-                android:layout_marginTop="3dp"
-                android:id="@+id/doctor_experience"
+                android:id="@+id/appointment_no"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/years_of_experience_s"/>
+                android:text="@string/appointment_no_s"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/black"/>
             <TextView
-                android:layout_marginTop="3dp"
-                android:id="@+id/doctor_fees"
+                android:id="@+id/appointment_pay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/fees_s_per_hour"/>
+                android:text="@string/payment_s"
+                android:textColor="@color/black"/>
             <TextView
-                android:id="@+id/doctor_rating"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:textColor="@color/black"
-                android:gravity="bottom|end"
-                android:text="@string/rating_s_5"/>
+                android:id="@+id/appointment_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/date_s"
+                android:textColor="@color/black"/>
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 

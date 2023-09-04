@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_background">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".activities.AppointmentListActivity"
+        android:orientation="vertical">
+
+        <TextView
+            android:text="@string/your_appointments"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:layout_marginTop="10dp"
+            android:textStyle="bold"
+            android:textColor="@color/red"
+            android:layout_gravity="center"/>
+
+        <LinearLayout
+            android:id="@+id/layout_no_appointment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginTop="30dp">
+
+            <ImageView
+                android:layout_gravity="center"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:src="@drawable/appointment_calendar"
+                android:scaleType="centerCrop"
+                android:contentDescription="@string/photo_no_appointment"/>
+            <TextView
+                android:text="@string/no_appointment_found"
+                android:textStyle="bold"
+                android:textSize="25sp"
+                android:textColor="@color/red"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_appointments"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="10dp"
+            tools:listitem="@layout/item_appointment_list"
+            android:clipToPadding="false"/>
+
+    </LinearLayout>
+</ScrollView>

@@ -2,5 +2,7 @@
 <resources>
     <array name="preloaded_fonts" translatable="false">
         <item>@font/beth_ellen</item>
+        <item>@font/charmonman</item>
+        <item>@font/charmonman_bold</item>
     </array>
 </resources>

@@ -1,11 +1,17 @@
 package com.example.meddirect.activities
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.meddirect.R
 import com.example.meddirect.adapters.HomeCategoryAdapter
 import com.example.meddirect.adapters.HomeDoctorAdapter
 import com.example.meddirect.databinding.ActivityHomeBinding
@@ -25,6 +31,7 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var homeDoctorList: MutableList<Doctor>
     private lateinit var homeCategoryList: ArrayList<Category>
     private lateinit var toolbar: androidx.appcompat.widget.Toolbar
+    private lateinit var toggle: ActionBarDrawerToggle
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,6 +45,67 @@ class HomeActivity : AppCompatActivity() {
         toolbar = binding.homeToolBar
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayShowTitleEnabled(false)
+
+        //setting up drawer layout and toggle button
+        val drawerLayout = binding.drawerLayout
+        val navView = binding.navView
+
+        toggle = ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.open_nav,R.string.close_nav)
+        drawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        //when navigation drawer item is clicked
+        navView.setNavigationItemSelectedListener {
+            when(it.itemId){
+                R.id.nav_home -> {
+
+                }
+                R.id.nav_profile -> {
+                    val intent = Intent(this@HomeActivity,UserProfileActivity::class.java)
+                    startActivity(intent)
+                }
+                R.id.nav_appointment -> {
+                    val intent = Intent(this@HomeActivity,AppointmentListActivity::class.java)
+                    startActivity(intent)
+                }
+                R.id.nav_share -> {
+                    val intent = Intent()
+                    intent.action = Intent.ACTION_SEND
+                    intent.type = "text/plain"
+                    intent.putExtra(Intent.EXTRA_TEXT,resources.getString(R.string.share_app))
+                    startActivity(intent)
+                }
+                R.id.nav_feedback -> {
+                    val intent = Intent()
+                    intent.action = Intent.ACTION_SENDTO
+                    intent.data = Uri.parse("mailto:medicaldirectindia@gmail.com")
+                    intent.putExtra(Intent.EXTRA_SUBJECT,"Feedback for MedDirect App")
+                    if(intent.resolveActivity(packageManager) != null) {
+                        startActivity(intent)
+                    }
+                }
+                R.id.nav_support -> {
+                    Toast.makeText(this,"Coming Soon",Toast.LENGTH_SHORT).show()
+                }
+                R.id.nav_about_us -> {
+                    Toast.makeText(this,"Coming Soon",Toast.LENGTH_SHORT).show()
+                }
+                R.id.nav_log_out -> {
+                    val intent = Intent(this,SignInActivity::class.java)
+                    Toast.makeText(this,"Logged Out Successfully!", Toast.LENGTH_SHORT).show()
+                    //finish all activities
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                    startActivity(intent)
+                    finish()
+                }
+            }
+            drawerLayout.closeDrawer(GravityCompat.START)
+            true
+        }
+
 
         val categoryViewMore = binding.viewMoreTextview
         val doctorViewMore = binding.moreTextview
@@ -66,6 +134,13 @@ class HomeActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if(toggle.onOptionsItemSelected(item)){
+            return true
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     private fun displayTopDoctor(){

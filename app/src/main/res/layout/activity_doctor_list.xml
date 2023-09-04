@@ -7,16 +7,9 @@
     tools:context=".activities.DoctorListActivity"
     android:background="@color/app_background">
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvDoctor"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:listitem="@layout/item_doctor_list"/>
-
-    </FrameLayout>
-
 </LinearLayout>
