@@ -34,6 +34,7 @@ class AppointmentAdapter:ListAdapter<Appointment,AppointmentAdapter.AppointmentV
             val date: TextView = itemView.findViewById(R.id.appointment_date)
             val doctorImage : ImageView = itemView.findViewById(R.id.appointment_doctor_image)
 
+            //Getting doctor details from doctor table using doctor id from firebase
             val doctorReference = FirebaseDatabase.getInstance()
                 .reference
                 .child("doctor")
