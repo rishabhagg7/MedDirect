@@ -45,7 +45,8 @@
             android:contentDescription="@string/previous"
             android:src="@drawable/ic_previous"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/v_date_line" />
+            app:layout_constraintTop_toTopOf="@id/v_date_line"
+            app:tint="@color/black" />
 
         <ImageView
             android:id="@+id/iv_calendar_next"
@@ -55,6 +56,7 @@
             android:layout_marginEnd="10dp"
             android:contentDescription="@string/next"
             android:src="@drawable/ic_next"
+            app:tint="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/v_date_line" />
 
@@ -166,17 +168,20 @@
             app:layout_constraintTop_toBottomOf="@+id/v_problem_description_line"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
-            android:layout_marginTop="15dp">
+            android:layout_marginTop="15dp"
+            app:hintTextColor="@color/black"
+            app:boxStrokeColor="@color/black"
+            android:textColorHint="@color/black">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/description_edit_text"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:inputType="text|textMultiLine"
-                android:textColorHint="@color/black"
-                android:textColor="@color/black"
                 android:minLines="3"
-                android:maxLines="5"/>
+                android:maxLines="5"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <androidx.appcompat.widget.AppCompatButton
@@ -192,6 +197,6 @@
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
             android:text="@string/confirm_appointment"
-            android:textColor="@color/black"/>
+            android:textColor="@color/white"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

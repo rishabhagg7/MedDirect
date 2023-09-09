@@ -34,7 +34,10 @@
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:hint="@string/name">
+            android:hint="@string/name"
+            app:hintTextColor="@color/black"
+            app:boxStrokeColor="@color/black"
+            android:textColorHint="@color/black">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/name_edit_text"
@@ -53,7 +56,10 @@
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:hint="@string/email">
+            android:hint="@string/email"
+            app:hintTextColor="@color/black"
+            app:boxStrokeColor="@color/black"
+            android:textColorHint="@color/black">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/email_edit_text"
                 android:layout_width="match_parent"
@@ -71,7 +77,10 @@
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:hint="@string/age">
+            android:hint="@string/age"
+            app:hintTextColor="@color/black"
+            app:boxStrokeColor="@color/black"
+            android:textColorHint="@color/black">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/age_edit_text"
                 android:layout_width="match_parent"
@@ -88,7 +97,10 @@
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:hint="@string/height">
+            android:hint="@string/height"
+            app:hintTextColor="@color/black"
+            app:boxStrokeColor="@color/black"
+            android:textColorHint="@color/black">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/height_edit_text"
                 android:layout_width="match_parent"
@@ -105,7 +117,10 @@
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:hint="@string/weight_kg">
+            android:hint="@string/weight_kg"
+            app:hintTextColor="@color/black"
+            app:boxStrokeColor="@color/black"
+            android:textColorHint="@color/black">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/weight_edit_text"
                 android:layout_width="match_parent"
@@ -122,7 +137,10 @@
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:hint="@string/blood_group">
+            android:hint="@string/blood_group"
+            app:hintTextColor="@color/black"
+            app:boxStrokeColor="@color/black"
+            android:textColorHint="@color/black">
             <AutoCompleteTextView
                 android:id="@+id/blood_group_auto_complete"
                 android:layout_width="match_parent"
@@ -130,7 +148,7 @@
                 android:inputType="none"
                 android:maxLines="1"
                 android:textColorHint="@color/black"
-                android:textColor="@color/black" />
+                android:textColor="@color/black"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <androidx.appcompat.widget.AppCompatButton
@@ -139,6 +157,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:backgroundTint="@android:color/holo_green_light"
+            android:textColor="@color/white"
             android:text="@string/update_details"/>
 
         <androidx.appcompat.widget.AppCompatButton
@@ -147,6 +166,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:backgroundTint="@android:color/holo_green_light"
+            android:textColor="@color/white"
             android:text="@string/sign_out"/>
 
     </LinearLayout>

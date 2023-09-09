@@ -49,7 +49,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/hello"
                 android:textSize="35sp"
-                android:textColor="?attr/colorError"
+                android:textColor="#FFB3261E"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="10dp"/>
             <TextView

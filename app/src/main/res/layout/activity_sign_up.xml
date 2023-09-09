@@ -12,6 +12,7 @@
 
         <TextView
             android:id="@+id/sign_up_heading_text_view"
+            style="@style/AuthenticateHeading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
@@ -141,7 +142,7 @@
             android:layout_marginBottom="30dp"
             android:layout_marginTop="15dp"
             android:text="@string/already_have_an_account"
-            android:textColor="@color/indigo_800"
+            style="@style/IndigoText"
             app:layout_constraintTop_toBottomOf="@id/sign_up_button"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

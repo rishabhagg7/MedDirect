@@ -57,6 +57,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     tools:text="@string/rating_s_5"
+                    android:textColor="@color/black"
                     android:gravity="end"/>
             </LinearLayout>
 
@@ -79,6 +80,7 @@
                 android:id="@+id/doctor_about"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/black"
                 tools:text="Dr. Pradeep Gupta is a highly skilled and experienced eye specialist who has been practicing medicine for over 20 years. He is known for his compassion, patience, and dedication to his patients. Dr. Gupta is always up-to-date on the latest medical advances and is committed to providing his patients with the best possible care. He is a valuable asset to his team and is respected by his colleagues and patients alike."/>
 
 
@@ -102,7 +104,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/patient_count"
-                            android:textColor="@color/black"
+                            android:textColor="?android:colorPrimary"
                             android:textStyle="bold"
                             android:textSize="25sp"
                             android:layout_gravity="center"/>
@@ -130,7 +132,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             tools:text="@string/s_years"
-                            android:textColor="@color/black"
+                            android:textColor="?android:colorPrimary"
                             android:textStyle="bold"
                             android:textSize="24sp"
                             android:layout_gravity="center"
@@ -158,7 +160,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             tools:text="@string/s_hour"
-                            android:textColor="@color/black"
+                            android:textColor="?android:colorPrimary"
                             android:textStyle="bold"
                             android:textSize="25sp"
                             android:layout_gravity="center"/>
@@ -193,6 +195,7 @@
                 android:id="@+id/button_make_appointment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/white"
                 android:backgroundTint="@android:color/holo_green_light"
                 android:text="@string/make_appointment"/>
 

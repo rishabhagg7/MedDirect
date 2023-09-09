@@ -43,7 +43,10 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                android:hint="@string/patient_name">
+                android:hint="@string/patient_name"
+                app:hintTextColor="@color/black"
+                app:boxStrokeColor="@color/black"
+                android:textColorHint="@color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/patient_name_edit_text"
@@ -64,7 +67,10 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                android:hint="@string/patient_email">
+                android:hint="@string/patient_email"
+                app:hintTextColor="@color/black"
+                app:boxStrokeColor="@color/black"
+                android:textColorHint="@color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/patient_email_edit_text"
@@ -93,7 +99,10 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                android:hint="@string/patient_age">
+                android:hint="@string/patient_age"
+                app:hintTextColor="@color/black"
+                app:boxStrokeColor="@color/black"
+                android:textColorHint="@color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/patient_age_edit_text"
@@ -113,7 +122,10 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                android:hint="@string/patient_weight">
+                android:hint="@string/patient_weight"
+                app:hintTextColor="@color/black"
+                app:boxStrokeColor="@color/black"
+                android:textColorHint="@color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/patient_weight_edit_text"
@@ -132,7 +144,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:baselineAligned="false">
+            android:baselineAligned="false"
+            app:hintTextColor="@color/black"
+            app:boxStrokeColor="@color/black"
+            android:textColorHint="@color/black">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/patient_height_instructions"
@@ -141,7 +156,10 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                android:hint="@string/patient_height">
+                android:hint="@string/patient_height"
+                app:hintTextColor="@color/black"
+                app:boxStrokeColor="@color/black"
+                android:textColorHint="@color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/patient_height_edit_text"
@@ -161,7 +179,10 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                android:hint="@string/patient_blood_group">
+                android:hint="@string/patient_blood_group"
+                app:hintTextColor="@color/black"
+                app:boxStrokeColor="@color/black"
+                android:textColorHint="@color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/patient_blood_group_edit_text"
@@ -189,7 +210,10 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                android:hint="@string/doctor_name">
+                android:hint="@string/doctor_name"
+                app:hintTextColor="@color/black"
+                app:boxStrokeColor="@color/black"
+                android:textColorHint="@color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/doctor_name_edit_text"
@@ -210,7 +234,10 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                android:hint="@string/doctor_category">
+                android:hint="@string/doctor_category"
+                app:hintTextColor="@color/black"
+                app:boxStrokeColor="@color/black"
+                android:textColorHint="@color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/doctor_category_edit_text"
@@ -239,7 +266,10 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                android:hint="@string/tv_appointment_date">
+                android:hint="@string/tv_appointment_date"
+                app:hintTextColor="@color/black"
+                app:boxStrokeColor="@color/black"
+                android:textColorHint="@color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/appointment_date_edit_text"
@@ -260,7 +290,10 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                android:hint="@string/tv_appointment_time">
+                android:hint="@string/tv_appointment_time"
+                app:hintTextColor="@color/black"
+                app:boxStrokeColor="@color/black"
+                android:textColorHint="@color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/appointment_time_edit_text"
@@ -296,7 +329,10 @@
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
             android:layout_marginTop="15dp"
-            android:layout_marginBottom="15dp">
+            android:layout_marginBottom="15dp"
+            app:hintTextColor="@color/black"
+            app:boxStrokeColor="@color/black"
+            android:textColorHint="@color/black">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/problem_description_edit_text"
@@ -349,7 +385,7 @@
                         android:text="@string/doctor_fees"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/black"
+                        android:textColor="?android:colorPrimary"
                         android:textSize="15sp"/>
 
                     <TextView
@@ -357,7 +393,7 @@
                         tools:text="600"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/black"
+                        android:textColor="?android:colorPrimary"
                         android:textSize="15sp"
                         android:gravity="end"/>
                 </LinearLayout>
@@ -370,7 +406,7 @@
                         android:text="@string/app_charges"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/black"
+                        android:textColor="?android:colorPrimary"
                         android:textSize="15sp"/>
 
                     <TextView
@@ -378,7 +414,7 @@
                         tools:text="600"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/black"
+                        android:textColor="?android:colorPrimary"
                         android:textSize="15sp"
                         android:gravity="end"/>
                 </LinearLayout>
@@ -398,7 +434,7 @@
                         android:text="@string/total_pay"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/black"
+                        android:textColor="?android:colorPrimary"
                         android:textSize="15sp"/>
 
                     <TextView
@@ -406,7 +442,7 @@
                         tools:text="600"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/black"
+                        android:textColor="?android:colorPrimary"
                         android:textSize="15sp"
                         android:gravity="end"/>
                 </LinearLayout>

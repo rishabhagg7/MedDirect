@@ -2,8 +2,21 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.MedDirect" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <item name="colorPrimary">@color/white</item>
     </style>
+
+    <style name="AuthenticateHeading" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="IndigoText" parent= "TextAppearance.Material3.TitleSmall">
+        <item name="android:textColor">@color/indigo_200</item>
+    </style>
+
+    <style name="DoctorCategoryText" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">#BBBABF</item>
+    </style>
+
     <style name="Widget.mediDirect.TextInputLayout.OutlinedBox" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="boxStrokeErrorColor">@color/red_400</item>
         <item name="errorIconTint">@color/red_400</item>

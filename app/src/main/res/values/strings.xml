@@ -110,4 +110,5 @@
     <string name="your_appointments">Your Appointments</string>
     <string name="photo_no_appointment">Photo No appointment</string>
     <string name="no_appointment_found">No Appointment Found</string>
+    <string name="home_doctor_list_image">home doctor list image</string>
 </resources>
