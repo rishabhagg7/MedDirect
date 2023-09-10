@@ -112,8 +112,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/patients"
-                            android:textColor="@color/light_blue_200"
-                            android:layout_gravity="center"/>
+                            android:layout_gravity="center"
+                            style="@style/LightBlueText"/>
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
@@ -141,8 +141,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/experience"
-                            android:textColor="@color/light_blue_200"
-                            android:layout_gravity="center"/>
+                            android:layout_gravity="center"
+                            style="@style/LightBlueText"/>
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
@@ -168,8 +168,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/fees"
-                            android:textColor="@color/light_blue_200"
-                            android:layout_gravity="center"/>
+                            android:layout_gravity="center"
+                            style="@style/LightBlueText"/>
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 

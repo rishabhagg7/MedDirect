@@ -24,9 +24,9 @@
             android:layout_height="wrap_content"
             tools:text="Eyes Specialist"
             android:textSize="15sp"
-            android:textColor="@color/light_blue_700"
             android:textStyle="bold"
             android:layout_marginStart="50dp"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            style="@style/LightBlueText"/>
     </com.google.android.material.card.MaterialCardView>
 </LinearLayout>

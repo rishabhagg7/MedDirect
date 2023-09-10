@@ -468,7 +468,8 @@
             android:layout_height="wrap_content"
             android:text="@string/make_payment"
             android:background="@android:color/holo_green_light"
-            android:layout_margin="10dp"/>
+            android:layout_margin="10dp"
+            android:textColor="@color/white"/>
 
     </LinearLayout>
 

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools">
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/category"
         android:layout_width="match_parent"
@@ -16,17 +16,18 @@
                 android:id="@+id/category_image"
                 android:layout_width="140dp"
                 android:layout_height="140dp"
-                android:src="@drawable/ic_dental"
-                android:scaleType="fitCenter"/>
+                tools:src="@drawable/ic_dental"
+                android:scaleType="fitCenter"
+                android:contentDescription="@string/doctor_category_image" />
             <TextView
                 android:id="@+id/category_name"
                 android:layout_width="160dp"
                 android:layout_height="wrap_content"
-                android:text="Eyes Specialist"
+                tools:text="Eyes Specialist"
                 android:textSize="25sp"
-                android:textColor="@color/light_blue_700"
                 android:textStyle="bold"
                 android:layout_marginStart="70dp"
-                android:layout_gravity="center"/>
+                android:layout_gravity="center"
+                style="@style/LightBlueText"/>
     </com.google.android.material.card.MaterialCardView>
 </LinearLayout>

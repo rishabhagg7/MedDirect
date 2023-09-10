@@ -13,6 +13,10 @@
         <item name="android:textColor">@color/indigo_200</item>
     </style>
 
+    <style name="LightBlueText" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/light_blue_200</item>
+    </style>
+
     <style name="DoctorCategoryText" parent="TextAppearance.AppCompat">
         <item name="android:textColor">#BBBABF</item>
     </style>
