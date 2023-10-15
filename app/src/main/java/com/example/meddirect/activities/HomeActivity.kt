@@ -4,6 +4,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -173,6 +174,8 @@ class HomeActivity : AppCompatActivity() {
                 val totalDoctorToShow = minOf(4,homeDoctorList.size)
                 homeDoctorList = homeDoctorList.take(totalDoctorToShow).toMutableList()
                 homeDoctorAdapter.submitList(homeDoctorList)
+                binding.shimmerHomeDoctor.stopShimmer()
+                binding.shimmerHomeDoctor.visibility = View.GONE
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -201,6 +204,8 @@ class HomeActivity : AppCompatActivity() {
                     }
                 }
                 //sends the data to the recycler view
+                binding.shimmerHomeCategory.stopShimmer()
+                binding.shimmerHomeCategory.visibility = View.GONE
                 homeCategoryAdapter.submitList(homeCategoryList)
             }
 
