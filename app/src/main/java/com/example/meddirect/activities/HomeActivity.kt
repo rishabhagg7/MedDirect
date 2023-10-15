@@ -22,6 +22,9 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class HomeActivity : AppCompatActivity() {
 
@@ -111,10 +114,18 @@ class HomeActivity : AppCompatActivity() {
         val doctorViewMore = binding.moreTextview
         val profileIcon = binding.profileIcon
 
-        //display name of the user
-        displayName()
-        displayCategory()
-        displayTopDoctor()
+        CoroutineScope(Dispatchers.IO).launch {
+            //display name of the user
+            displayName()
+        }
+        CoroutineScope(Dispatchers.IO).launch {
+            //display categories
+            displayCategory()
+        }
+        CoroutineScope(Dispatchers.IO).launch {
+            //display top doctors
+            displayTopDoctor()
+        }
 
         //when user click on view more of category
         categoryViewMore.setOnClickListener {

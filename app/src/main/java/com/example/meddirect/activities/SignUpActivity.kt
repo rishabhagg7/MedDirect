@@ -72,7 +72,7 @@ class SignUpActivity : AppCompatActivity() {
                         //user details created
                         //add the user in database
                         val databaseRef = database.reference.child("users").child(auth.currentUser!!.uid)
-                        val user = User(name,email,auth.currentUser!!.uid,"","","","")
+                        val user = User(name = name,email = email,uId = auth.currentUser!!.uid,"","","","")
                         databaseRef.setValue(user).addOnCompleteListener {
                             if(it.isSuccessful){
                                 //Data Entered Successfully
@@ -109,6 +109,8 @@ class SignUpActivity : AppCompatActivity() {
             Toast.makeText(this,"Name Missing!",Toast.LENGTH_SHORT).show()
             return false
         }
+        //name is validated
+
         if(email.isEmpty()){
             signUpEmail.error = "Enter your email"
             Toast.makeText(this,"Email Address Missing!",Toast.LENGTH_SHORT).show()
@@ -120,7 +122,6 @@ class SignUpActivity : AppCompatActivity() {
             return false
         }
         //email pattern is now validated
-
 
         if(password.isEmpty()){
             signUpPasswordLayout.endIconMode = TextInputLayout.END_ICON_NONE
@@ -135,7 +136,6 @@ class SignUpActivity : AppCompatActivity() {
             return false
         }
         //password pattern is now validated
-
 
         if(confirmPassword.isEmpty() || password != confirmPassword){
             signUpConfirmPasswordLayout.endIconMode = TextInputLayout.END_ICON_NONE
