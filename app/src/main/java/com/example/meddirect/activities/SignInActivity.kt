@@ -70,11 +70,9 @@ class SignInActivity : AppCompatActivity() {
         }
 
     }
-
     private fun validateData(signInEmail: EditText, signInPassword: EditText,signInPasswordLayout: TextInputLayout): Boolean {
         val email = signInEmail.text.toString()
         val password = signInPassword.text.toString()
-
 
         if(email.isEmpty()){
             signInEmail.error = "Enter your email"
@@ -87,7 +85,6 @@ class SignInActivity : AppCompatActivity() {
             return false
         }
         //email address is now validated
-
 
         if(password.isEmpty()){
             signInPasswordLayout.endIconMode = TextInputLayout.END_ICON_NONE
@@ -102,7 +99,6 @@ class SignInActivity : AppCompatActivity() {
             return false
         }
         //password pattern is now validated
-
         return true
     }
 }

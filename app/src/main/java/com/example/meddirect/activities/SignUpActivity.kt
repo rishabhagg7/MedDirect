@@ -36,8 +36,7 @@ class SignUpActivity : AppCompatActivity() {
         val signUpButton: androidx.appcompat.widget.AppCompatButton = binding.signUpButton
         val signInText: TextView = binding.signUpTextView
         val signInTextMessage: TextView = binding.signUpMessageTextView
-
-
+        
         //Go to sign up page if user click on sign in text
         signInText.setOnClickListener {
             val intent = Intent(this,SignInActivity::class.java)
@@ -52,7 +51,6 @@ class SignUpActivity : AppCompatActivity() {
 
         //If sign up button is clicked
         signUpButton.setOnClickListener {
-
             val name = signUpName.text.toString()
             val email = signUpEmail.text.toString()
             val password = signUpPassword.text.toString()
@@ -63,8 +61,7 @@ class SignUpActivity : AppCompatActivity() {
             //check if the user has filled all the details
             if(validateData(signUpName,signUpEmail,signUpPassword,
                     signUpConfirmPassword,signUpPasswordLayout,
-                    signUpConfirmPasswordLayout))
-            {
+                    signUpConfirmPasswordLayout)) {
                 //data is validated now, start authentication
 
                 auth.createUserWithEmailAndPassword(email,password).addOnCompleteListener { it1 ->
