@@ -28,6 +28,7 @@ class ShowAppointmentDetailsActivity : AppCompatActivity(), PaymentResultListene
     private lateinit var bundle: Bundle
     private lateinit var uIdReference: DatabaseReference
     private lateinit var dIdReference: DatabaseReference
+    private lateinit var aIdReference: DatabaseReference
     private lateinit var appointmentCollectionReference: CollectionReference
     private lateinit var userId: String
     private lateinit var doctorId: String
@@ -52,6 +53,7 @@ class ShowAppointmentDetailsActivity : AppCompatActivity(), PaymentResultListene
 
         uIdReference = database.reference.child("users").child(userId)
         dIdReference = database.reference.child("doctor").child(doctorId)
+        aIdReference = database.reference.child("appointments")
         appointmentCollectionReference = firestoreDatabase.collection("appointments")
 
         displayData()
@@ -102,6 +104,7 @@ class ShowAppointmentDetailsActivity : AppCompatActivity(), PaymentResultListene
     private fun createAppointment() {
         //user may have updated description
         updateDescription()
+        appointmentId = appointmentCollectionReference.document().id
         val appointment = Appointment(appointmentId,userId,doctorId,dateAppointment,timeAppointment,description,totalPayment,paymentId)
         appointmentCollectionReference.document(appointmentId!!).set(appointment)
             .addOnCompleteListener {
