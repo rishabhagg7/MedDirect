@@ -11,6 +11,8 @@ import com.example.meddirect.model.Appointment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.firestore.CollectionReference
+import com.google.firebase.firestore.FirebaseFirestore
 import com.razorpay.Checkout
 import com.razorpay.PaymentResultListener
 import org.json.JSONObject
@@ -19,14 +21,14 @@ import java.util.Locale
 import kotlin.math.roundToInt
 
 class ShowAppointmentDetailsActivity : AppCompatActivity(), PaymentResultListener {
-
     private lateinit var binding: ActivityShowAppointmentDetailsBinding
     private lateinit var auth: FirebaseAuth
     private lateinit var database: FirebaseDatabase
+    private lateinit var firestoreDatabase: FirebaseFirestore
     private lateinit var bundle: Bundle
     private lateinit var uIdReference: DatabaseReference
     private lateinit var dIdReference: DatabaseReference
-    private lateinit var aIdReference: DatabaseReference
+    private lateinit var appointmentCollectionReference: CollectionReference
     private lateinit var userId: String
     private lateinit var doctorId: String
     private lateinit var dateAppointment: String
@@ -42,6 +44,7 @@ class ShowAppointmentDetailsActivity : AppCompatActivity(), PaymentResultListene
 
         auth = FirebaseAuth.getInstance()
         database = FirebaseDatabase.getInstance()
+        firestoreDatabase = FirebaseFirestore.getInstance()
         bundle = intent.extras!!
 
         userId = auth.uid!!
@@ -49,7 +52,7 @@ class ShowAppointmentDetailsActivity : AppCompatActivity(), PaymentResultListene
 
         uIdReference = database.reference.child("users").child(userId)
         dIdReference = database.reference.child("doctor").child(doctorId)
-        aIdReference = database.reference.child("appointments")
+        appointmentCollectionReference = firestoreDatabase.collection("appointments")
 
         displayData()
 
@@ -99,11 +102,11 @@ class ShowAppointmentDetailsActivity : AppCompatActivity(), PaymentResultListene
     private fun createAppointment() {
         //user may have updated description
         updateDescription()
-        appointmentId = aIdReference.push().key!!
         val appointment = Appointment(appointmentId,userId,doctorId,dateAppointment,timeAppointment,description,totalPayment,paymentId)
-        aIdReference.child(appointmentId!!).setValue(appointment).addOnCompleteListener {
-            Toast.makeText(this,"Appointment Scheduled Successfully!",Toast.LENGTH_SHORT).show()
-        }
+        appointmentCollectionReference.document(appointmentId!!).set(appointment)
+            .addOnCompleteListener {
+                Toast.makeText(this,"Appointment Scheduled Successfully!",Toast.LENGTH_SHORT).show()
+            }
     }
 
     private fun updateDescription() {
