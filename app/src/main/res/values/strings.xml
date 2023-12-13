@@ -114,11 +114,4 @@
     <string name="doctor_category_image">doctor category image</string>
     <string name="dot">.</string>
     <string name="or">Or</string>
-    <string name="web_client_id">819074908622-dl4dqntqskoa65iaernrniddh2jbet42.apps.googleusercontent.com</string>
-
-    <string name="facebook_app_id">892907702555671</string>
-    <string name="fb_login_protocol_scheme">fb892907702555671</string>
-    <string name="facebook_client_token">627c49579b0168e16d279c771a546210</string>
-
-
 </resources>
