@@ -18,6 +18,9 @@ import com.example.meddirect.adapters.HomeDoctorAdapter
 import com.example.meddirect.databinding.ActivityHomeBinding
 import com.example.meddirect.model.Category
 import com.example.meddirect.model.Doctor
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -36,12 +39,17 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var homeCategoryList: ArrayList<Category>
     private lateinit var toolbar: androidx.appcompat.widget.Toolbar
     private lateinit var toggle: ActionBarDrawerToggle
+    private lateinit var googleSignInClient: GoogleSignInClient
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(getString(R.string.web_client_id)).requestEmail().build()
+
+        googleSignInClient = GoogleSignIn.getClient(this,gso)
         auth = FirebaseAuth.getInstance()
         database = FirebaseDatabase.getInstance()
         homeDoctorList = mutableListOf()
@@ -96,6 +104,8 @@ class HomeActivity : AppCompatActivity() {
                     Toast.makeText(this,"Coming Soon",Toast.LENGTH_SHORT).show()
                 }
                 R.id.nav_log_out -> {
+                    auth.signOut()
+                    googleSignInClient.signOut()
                     val intent = Intent(this,SignInActivity::class.java)
                     Toast.makeText(this,"Logged Out Successfully!", Toast.LENGTH_SHORT).show()
                     //finish all activities

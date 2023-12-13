@@ -13,7 +13,7 @@
     <string name="sign_up_doctor_image">Sign Up Doctor Image</string>
     <string name="enter_your_email_id">Email address</string>
     <string name="enter_password">Password</string>
-    <string name="log_in">Log in</string>
+    <string name="log_in">Login</string>
     <string name="sign_up">Sign Up</string>
     <string name="don_t_have_an_account">Don\'t have an account?</string>
     <string name="welcome_sign_in_to_meet_your_super_heroes">
@@ -112,4 +112,13 @@
     <string name="no_appointment_found">No Appointment Found</string>
     <string name="home_doctor_list_image">home doctor list image</string>
     <string name="doctor_category_image">doctor category image</string>
+    <string name="dot">.</string>
+    <string name="or">Or</string>
+    <string name="web_client_id">819074908622-dl4dqntqskoa65iaernrniddh2jbet42.apps.googleusercontent.com</string>
+
+    <string name="facebook_app_id">892907702555671</string>
+    <string name="fb_login_protocol_scheme">fb892907702555671</string>
+    <string name="facebook_client_token">627c49579b0168e16d279c771a546210</string>
+
+
 </resources>

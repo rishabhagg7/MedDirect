@@ -195,6 +195,6 @@ class ShowAppointmentDetailsActivity : AppCompatActivity(), PaymentResultListene
     }
 
     override fun onPaymentError(p0: Int, p1: String?) {
-
+        Toast.makeText(this,"Payment Error: $p1",Toast.LENGTH_SHORT).show()
     }
 }

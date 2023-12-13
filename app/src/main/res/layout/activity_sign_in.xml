@@ -4,7 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fillViewport="true">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -29,12 +30,12 @@
             android:id="@+id/signInImage"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="30dp"
             android:contentDescription="@string/sign_in_doctor_image"
             android:scaleType="centerCrop"
             android:src="@drawable/sign_in_doctor_image"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/sign_in_heading_text_view"
+            app:layout_constraintStart_toStartOf="@+id/sign_in_heading_text_view"
             app:layout_constraintTop_toBottomOf="@id/sign_in_heading_text_view" />
 
         <com.google.android.material.textfield.TextInputLayout
@@ -42,10 +43,10 @@
             style="@style/Widget.mediDirect.TextInputLayout.OutlinedBox"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="30dp"
             android:hint="@string/enter_your_email_id"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/signInImage"
+            app:layout_constraintStart_toStartOf="@+id/signInImage"
             app:layout_constraintTop_toBottomOf="@+id/signInImage"
             app:startIconDrawable="@drawable/baseline_email_24">
 
@@ -66,8 +67,8 @@
             android:layout_marginTop="20dp"
             android:hint="@string/enter_password"
             app:passwordToggleEnabled="true"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/sign_in_email_instructions"
+            app:layout_constraintStart_toStartOf="@+id/sign_in_email_instructions"
             app:layout_constraintTop_toBottomOf="@+id/sign_in_email_instructions"
             app:startIconDrawable="@drawable/baseline_lock_24">
 
@@ -80,17 +81,75 @@
                 android:textColorHint="#8D6E63" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <androidx.appcompat.widget.AppCompatButton
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/log_in_button"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:backgroundTint="#F5931D"
             android:text="@string/log_in"
+            android:textAllCaps="false"
             android:textColor="@color/white"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:cornerRadius="3dp"
+            app:layout_constraintEnd_toEndOf="@+id/sign_in_password_instructions"
+            app:layout_constraintStart_toStartOf="@+id/sign_in_password_instructions"
             app:layout_constraintTop_toBottomOf="@+id/sign_in_password_instructions" />
+
+        <View
+            android:id="@+id/line_start"
+            android:layout_width="135dp"
+            android:layout_height="2dp"
+            android:background="#F5931D"
+            android:layout_marginTop="30dp"
+            app:layout_constraintStart_toStartOf="@+id/log_in_button"
+            app:layout_constraintTop_toBottomOf="@+id/log_in_button"/>
+
+        <TextView
+            android:id="@+id/tv_or"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:text="@string/or"
+            android:textColor="#F5931D"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginTop="77dp"
+            app:layout_constraintStart_toEndOf="@+id/line_start"
+            app:layout_constraintTop_toTopOf="@+id/log_in_button"
+            app:layout_constraintBottom_toBottomOf="@+id/line_start"/>
+
+        <View
+            android:id="@+id/line_end"
+            android:layout_width="135dp"
+            android:layout_height="2dp"
+            android:background="#F5931D"
+            android:layout_marginTop="30dp"
+            app:layout_constraintStart_toEndOf="@+id/tv_or"
+            app:layout_constraintTop_toBottomOf="@+id/log_in_button"/>
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/google_log_in_button"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/google_logo"
+            android:background="@drawable/custom_image_button"
+            android:layout_marginStart="90dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintStart_toStartOf="@id/log_in_button"
+            app:layout_constraintTop_toBottomOf="@+id/line_start"/>
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/facebook_log_in_button"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/fb_logo"
+            android:background="@drawable/custom_image_button"
+            android:layout_marginEnd="90dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="@id/log_in_button"
+            app:layout_constraintTop_toBottomOf="@+id/line_end"/>
 
         <TextView
             android:id="@+id/sign_up_message_text_view"
@@ -100,7 +159,7 @@
             android:text="@string/don_t_have_an_account"
             style="@style/IndigoText"
             android:layout_marginTop="30dp"
-            app:layout_constraintTop_toBottomOf="@id/log_in_button"
+            app:layout_constraintTop_toBottomOf="@id/google_log_in_button"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/sign_up_text_view"
@@ -122,6 +181,20 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/sign_up_message_text_view"
             app:layout_constraintTop_toTopOf="@id/sign_up_message_text_view" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/loading_animation"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/loading"
+            android:background="#F76C5E"
+            android:visibility="invisible"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

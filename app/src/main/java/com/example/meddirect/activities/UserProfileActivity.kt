@@ -9,6 +9,9 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.meddirect.R
 import com.example.meddirect.databinding.ActivityUserProfileBinding
 import com.example.meddirect.model.User
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 
@@ -18,11 +21,17 @@ class UserProfileActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var database: FirebaseDatabase
     private lateinit var uid: String
+    private lateinit var googleSignInClient: GoogleSignInClient
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityUserProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(getString(R.string.web_client_id)).requestEmail().build()
+
+        googleSignInClient = GoogleSignIn.getClient(this,gso)
 
         auth = FirebaseAuth.getInstance()
         database = FirebaseDatabase.getInstance()
@@ -37,6 +46,7 @@ class UserProfileActivity : AppCompatActivity() {
 
         binding.signOutButton.setOnClickListener {
             auth.signOut()
+            googleSignInClient.signOut()
             val intent = Intent(this,SignInActivity::class.java)
             Toast.makeText(this,"Signed Out Successfully!",Toast.LENGTH_SHORT).show()
             //finish all activities
