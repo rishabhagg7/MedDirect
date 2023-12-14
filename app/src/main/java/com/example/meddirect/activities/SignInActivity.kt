@@ -3,6 +3,7 @@ package com.example.meddirect.activities
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
@@ -251,5 +252,16 @@ class SignInActivity : AppCompatActivity() {
         }
         //password pattern is now validated
         return true
+    }
+
+    override fun onStart() {
+        super.onStart()
+        //checking if user is signed in (not null)
+        if(auth.currentUser != null){
+            Log.d("check","here")
+            val intent = Intent(this@SignInActivity,HomeActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
 }
