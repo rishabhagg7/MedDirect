@@ -114,4 +114,11 @@
     <string name="doctor_category_image">doctor category image</string>
     <string name="dot">.</string>
     <string name="or">Or</string>
+    <string name="appointment_summary">Appointment Summary</string>
+    <string name="your_appointment">Your Appointment</string>
+    <string name="time_s">Time: %s</string>
+    <string name="problem_description_s">Problem Description: %s</string>
+    <string name="appointment_charges">Appointment Charges</string>
+    <string name="appointment_id_s">Appointment Id: %s</string>
+    <string name="payment_id_s">Payment Id: %s</string>
 </resources>

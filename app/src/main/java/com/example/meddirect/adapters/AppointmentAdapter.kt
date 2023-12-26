@@ -1,15 +1,19 @@
 package com.example.meddirect.adapters
 
+import android.content.Intent
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.meddirect.R
+import com.example.meddirect.activities.ViewAppointmentDetailsActivity
 import com.example.meddirect.model.Appointment
 import com.google.firebase.database.FirebaseDatabase
 
@@ -23,6 +27,13 @@ class AppointmentAdapter:ListAdapter<Appointment,AppointmentAdapter.AppointmentV
 
     override fun onBindViewHolder(holder: AppointmentViewHolder, position: Int) {
         holder.bind(getItem(position))
+        holder.itemView.setOnClickListener {
+            val intent = Intent(holder.itemView.context,ViewAppointmentDetailsActivity::class.java)
+            val bundle = Bundle()
+            bundle.putString("appointmentId",getItem(position).appointmentId)
+            intent.putExtras(bundle)
+            startActivity(holder.itemView.context,intent,bundle)
+        }
     }
 
     class AppointmentViewHolder(view: View): RecyclerView.ViewHolder(view) {

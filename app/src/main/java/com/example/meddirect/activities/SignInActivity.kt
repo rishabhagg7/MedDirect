@@ -3,7 +3,6 @@ package com.example.meddirect.activities
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
@@ -178,7 +177,6 @@ class SignInActivity : AppCompatActivity() {
         result ->
         run {
             if (result.resultCode == Activity.RESULT_OK) {
-                binding.loadingAnimation.visibility = LottieAnimationView.VISIBLE
                 val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
                 if (task.isSuccessful) {
                     //getting account and credentials
@@ -187,6 +185,7 @@ class SignInActivity : AppCompatActivity() {
                     //sign in
                     auth.signInWithCredential(credential).addOnCompleteListener {
                         if (it.isSuccessful) {
+                            binding.loadingAnimation.visibility = LottieAnimationView.VISIBLE
                             //add data of user if it does not exist
                             val email = account!!.email
                             val name = account.displayName
@@ -208,7 +207,7 @@ class SignInActivity : AppCompatActivity() {
                                 }
 
                                 override fun onCancelled(error: DatabaseError) {
-
+                                    binding.loadingAnimation.visibility = LottieAnimationView.GONE
                                 }
 
                             })
@@ -258,7 +257,6 @@ class SignInActivity : AppCompatActivity() {
         super.onStart()
         //checking if user is signed in (not null)
         if(auth.currentUser != null){
-            Log.d("check","here")
             val intent = Intent(this@SignInActivity,HomeActivity::class.java)
             startActivity(intent)
             finish()
