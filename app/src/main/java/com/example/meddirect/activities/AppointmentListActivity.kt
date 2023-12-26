@@ -1,6 +1,7 @@
 package com.example.meddirect.activities
 
 import android.os.Bundle
+import android.view.View
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -30,6 +31,9 @@ class AppointmentListActivity : AppCompatActivity() {
         rvAppointment.layoutManager = LinearLayoutManager(this@AppointmentListActivity)
         rvAppointment.adapter = appointmentAdapter
         binding.layoutNoAppointment.visibility = LinearLayout.GONE
+        binding.rvAppointments.visibility = RecyclerView.GONE
+        binding.shimmerAppointmentList.visibility = View.VISIBLE
+        binding.shimmerAppointmentList.startShimmer()
 
         val appointmentCollectionReference = firestoreDatabase.collection("appointments")
         appointmentCollectionReference
@@ -49,6 +53,8 @@ class AppointmentListActivity : AppCompatActivity() {
                         binding.layoutNoAppointment.visibility = LinearLayout.GONE
                         binding.rvAppointments.visibility = RecyclerView.VISIBLE
                     }
+                    binding.shimmerAppointmentList.stopShimmer()
+                    binding.shimmerAppointmentList.visibility = View.GONE
                     appointmentAdapter.submitList(appointmentList)
                 }
             }
