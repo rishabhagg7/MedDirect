@@ -12,6 +12,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.example.meddirect.R
 import com.example.meddirect.adapters.HomeCategoryAdapter
 import com.example.meddirect.adapters.HomeDoctorAdapter
@@ -240,8 +242,13 @@ class HomeActivity : AppCompatActivity() {
                 val snapshot = it.result
                 //fetching column data
                 val name = snapshot.child("name").getValue(String::class.java)
+                val photoUrl = snapshot.child("photoUrl").getValue(String::class.java)
                 //showing the text in textView
                 userName.text = name
+                Glide.with(this).load(photoUrl)
+                    .apply(RequestOptions().placeholder(R.drawable.baseline_account_circle_24))
+                    .circleCrop()
+                    .into(binding.profileIcon)
             }else{
                 //don't show name
                 userName.visibility = TextView.GONE

@@ -121,4 +121,9 @@
     <string name="appointment_charges">Appointment Charges</string>
     <string name="appointment_id_s">Appointment Id: %s</string>
     <string name="payment_id_s">Payment Id: %s</string>
+    <string name="permission_required">Permission Required</string>
+    <string name="media_permission_required_message">Media permission is required to access the gallery to update profile picture</string>
+    <string name="grant_permission">Grant Permission</string>
+    <string name="no_thanks">No Thanks</string>
+    <string name="profile_picture">profile picture</string>
 </resources>

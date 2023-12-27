@@ -149,7 +149,7 @@ class SignInActivity : AppCompatActivity() {
                         .addListenerForSingleValueEvent(object: ValueEventListener {
                             override fun onDataChange(snapshot: DataSnapshot) {
                                 if(!snapshot.hasChildren()){
-                                    databaseReference.child(uid!!).setValue(User(name,email,uid))
+                                    databaseReference.child(uid!!).setValue(User(name = name,email = email,uId = uid))
                                 }
                                 //go ahead
                                 Toast.makeText(this@SignInActivity,"Signed In Successfully!",Toast.LENGTH_LONG).show()
@@ -190,12 +190,13 @@ class SignInActivity : AppCompatActivity() {
                             val email = account!!.email
                             val name = account.displayName
                             val uid = auth.currentUser!!.uid
+                            val photoUrl = account.photoUrl.toString()
                             val databaseReference = database.getReference("users")
                             databaseReference.orderByChild("email").equalTo(email)
                                 .addListenerForSingleValueEvent(object: ValueEventListener {
                                 override fun onDataChange(snapshot: DataSnapshot) {
                                     if(!snapshot.hasChildren()){
-                                        databaseReference.child(uid).setValue(User(name,email,uid))
+                                        databaseReference.child(uid).setValue(User(name = name,email = email,uId = uid, photoUrl = photoUrl))
                                     }
 
                                     //go ahead

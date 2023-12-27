@@ -7,5 +7,6 @@ data class User(
     val age: String? = null,
     val height: String? = null,
     val weight: String? = null,
-    val bloodGroup: String? = null
+    val bloodGroup: String? = null,
+    val photoUrl: String? = null
 )
