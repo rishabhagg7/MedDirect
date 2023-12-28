@@ -103,7 +103,8 @@ class HomeActivity : AppCompatActivity() {
                     Toast.makeText(this,"Coming Soon",Toast.LENGTH_SHORT).show()
                 }
                 R.id.nav_about_us -> {
-                    Toast.makeText(this,"Coming Soon",Toast.LENGTH_SHORT).show()
+                    val intent = Intent(this,AboutAppActivity::class.java)
+                    startActivity(intent)
                 }
                 R.id.nav_log_out -> {
                     auth.signOut()
